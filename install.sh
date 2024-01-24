@@ -40,21 +40,13 @@ echo "AWX URL: https://awx.example.lab"
 echo "Username: admin"
 echo "Password: Ansible123!"
 
-# Wait for 20 seconds before proceeding
-echo "Waiting for 20 seconds before checking AWX deployment status..."
-sleep 20
+# Print out Kubernetes resources in the 'awx' namespace
+echo "The deployment takes a couple minutes to complete. Run the following command to check the status:"
 
-# Stream the logs and wait for the specific output
-echo "Checking AWX Operator logs..."
-kubectl -n awx logs -f deployments/awx-operator-controller-manager | while read LINE; do
-    echo "$LINE"
-    if echo "$LINE" | grep -q "localhost\s*:\s*ok=84"; then
-        echo "AWX Operator has successfully completed the setup."
-        break
-    fi
-done
-
-AWX_INGRESS_IP=$(kubectl -n awx get ingress awx-ingress -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+echo " "
+echo "When its complete 2-5 minutes later, execute the following commands"
+echo " *********** "
+echo "AWX_INGRESS_IP=$(kubectl -n awx get ingress awx-ingress -o jsonpath='{.status.loadBalancer.ingress[0].ip}')"
 echo "AWX Ingress IP Address: $AWX_INGRESS_IP"
 
 # DNS Setup instructions
