@@ -196,6 +196,47 @@ kubectl -n awx get awx,all,ingress,secrets
 
 The output should look like this 
 
-``
+```
+NAME                      AGE
+awx.awx.ansible.com/awx   6m26s
+
+NAME                                                   READY   STATUS    RESTARTS   AGE
+pod/awx-operator-controller-manager-775bd7b75d-fj5nl   2/2     Running   0          9m16s
+pod/awx-postgres-13-0                                  1/1     Running   0          6m15s
+pod/awx-task-8486dc5d49-gszjz                          4/4     Running   0          5m51s
+pod/awx-web-5dfdd99f4f-l4m2f                           3/3     Running   0          5m4s
+
+NAME                                                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+service/awx-operator-controller-manager-metrics-service   ClusterIP   10.43.200.124   <none>        8443/TCP   9m16s
+service/awx-postgres-13                                   ClusterIP   None            <none>        5432/TCP   6m15s
+service/awx-service                                       ClusterIP   10.43.155.57    <none>        80/TCP     5m52s
+
+NAME                                              READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/awx-operator-controller-manager   1/1     1            1           9m16s
+deployment.apps/awx-task                          1/1     1            1           5m51s
+deployment.apps/awx-web                           1/1     1            1           5m4s
+
+NAME                                                         DESIRED   CURRENT   READY   AGE
+replicaset.apps/awx-operator-controller-manager-775bd7b75d   1         1         1       9m16s
+replicaset.apps/awx-task-8486dc5d49                          1         1         1       5m51s
+replicaset.apps/awx-web-5dfdd99f4f                           1         1         1       5m4s
+
+NAME                               READY   AGE
+statefulset.apps/awx-postgres-13   1/1     6m15s
+
+NAME                                    CLASS     HOSTS             ADDRESS         PORTS     AGE
+ingress.networking.k8s.io/awx-ingress   traefik   awx.example.com   172.16.10.139   80, 443   5m52s
+
+NAME                                  TYPE                DATA   AGE
+secret/redhat-operators-pull-secret   Opaque              1      9m16s
+secret/awx-admin-password             Opaque              1      6m26s
+secret/awx-postgres-configuration     Opaque              6      6m26s
+secret/awx-secret-tls                 kubernetes.io/tls   2      6m26s
+secret/awx-app-credentials            Opaque              3      5m54s
+secret/awx-secret-key                 Opaque              1      6m22s
+secret/awx-broadcast-websocket        Opaque              1      6m19s
+secret/awx-receptor-ca                kubernetes.io/tls   2      5m59s
+secret/awx-receptor-work-signing      Opaque              2      5m56s
+```
 
 Now your AWX is available at `https://awx.example.com/` or the hostname you specified.
