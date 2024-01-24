@@ -239,4 +239,4 @@ secret/awx-receptor-ca                kubernetes.io/tls   2      5m59s
 secret/awx-receptor-work-signing      Opaque              2      5m56s
 ```
 
-Now your AWX is available at `https://awx.example.com/` or the hostname you specified.
+Now your AWX is available at `https://awx.example.com/` or the hostname you specified. Or the hostname that you configured.
