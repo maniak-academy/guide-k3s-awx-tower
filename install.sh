@@ -46,3 +46,7 @@ echo "kubectl -n awx logs -f deployments/awx-operator-controller-manager"
 
 AWX_INGRESS_IP=$(kubectl -n awx get ingress awx-ingress -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 echo "AWX Ingress IP Address: $AWX_INGRESS_IP"
+
+# DNS Setup instructions
+echo "Please set up DNS to point to the AWX Ingress IP Address."
+echo "Add a DNS A record for ${AWX_HOST} pointing to $AWX_INGRESS_IP"

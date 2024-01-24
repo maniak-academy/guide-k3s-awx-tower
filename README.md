@@ -19,6 +19,18 @@ An example implementation of AWX on single node K3s using AWX Operator, with eas
   - AWX 23.6.0
   - PostgreSQL 13
 
+# Quick Guide 
+If you want to install ansible awx quickly just use the install.sh script just download the install.sh file 
+
+
+```
+wget https://raw.githubusercontent.com/maniak-academy/guide-k3s-awx-tower/main/install.sh
+chmod +x install.sh
+sudo ./install.sh
+```
+
+
+# Manual Guide
 ## References
 
 - [K3s - Lightweight Kubernetes](https://docs.k3s.io/)
